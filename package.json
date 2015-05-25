@@ -1,0 +1,28 @@
+{
+  "name": "sample_atlas",
+  "version": "0.0.1",
+  "description": "Sample Atlas is a browser based app that enables the electronic musician to quickly search, navigate, and preview samples for upcoming recording projects. A musician’s entire collection of samples is represented as a visual atlas that convey’s the most important information: the information that a musician deems most meaningful to them for finding, previewing and ultimately selecting a sample for a recording.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adkelley/sample_atlas.git"
+  },
+  "keywords": [
+    "atlas",
+    "sample",
+    "library",
+    "particles"
+  ],
+  "author": "Alex Kelley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/adkelley/sample_atlas/issues"
+  },
+  "homepage": "https://github.com/adkelley/sample_atlas",
+  "dependencies": {
+    "mongoose": "^4.0.3"
+  }
+}
