@@ -1,0 +1,2 @@
+# sample_atlas
+Sample Atlas is a browser based app that enables the electronic musician to quickly search, navigate, and preview samples for upcoming recording projects. A musician’s entire collection of samples is represented as a visual atlas that convey’s the most important information: the information that a musician deems most meaningful to them for finding, previewing and ultimately selecting a sample for a recording.
