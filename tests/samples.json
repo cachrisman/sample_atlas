@@ -1,15 +1,10 @@
-{
-    "samples": 
-    [
-        {
-            "name": "bass001", 
-            "macro": "Bass",
-            "messo": "Analog Bass", 
-            "micro": "Dry", 
-            "technical": "", 
-            "filePath": "./samples/bass001"
-        }
-    ]
-}
-
-
+[
+    {
+        "name": "bass001", 
+        "macro": "Bass",
+        "messo": "Analog Bass", 
+        "micro": ["Dry", "FM"], 
+        "technical": "", 
+        "filePath": "./samples/bass001"
+    }
+]

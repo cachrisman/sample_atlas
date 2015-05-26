@@ -26,16 +26,23 @@ var Sample = function (name, macro, messo, micro, technical, filePath) {
 * read from the file. 
 */
 var getSamples = function (pathToFile) {
-  var samples;
+  var fileData, samples = [];
   $.ajax({
     url: pathToFile,
     async: false,
     dataType: 'json',
     success:  function (data) {
       //console.log("data: ", data);
-      samples = data;
+      fileData = data;
     }
   });
+
+  // Add the sample to the sample array
+  fileData.forEach(function(s) {
+    samples.push(new Sample(s.name, s.macro, s.messo,
+                            s.micro, s.technical, s.filePath));
+  });
+
   return samples;
 }
 

@@ -39,7 +39,7 @@ var Node = function (name, data) {
 /**
 * @Constructor Data
 * @param label String  // name of the node 
-* @param type "Macro" | "Messo" | "Micro" | "Sample",
+* @param type "macro" | "messo" | "micro" | "sample",
 * @param visible Boolean,
 * @param selected Boolean,
 * @param filePath pathToFile // path to sample file, sample's only
@@ -56,28 +56,62 @@ var Data = function (label, type, visible, selected,
   this.visible = visible;
   this.selected = selected;
   this.filePath = filePath;
-  this.color = color;
+  this.color = "#000";
   this.mass = 1.0;
   this.fixed = false;
-  this.point.x = 0;
-  this.point.y = 0;
+  this.point = arbor.Point;
 }
 
 /**
+* @Constructor Edge
+* @param type "macro" | "messo" | "micro" | "sample",
+* Return an Edge data attribute based on the type of Node
+*/
+var Edge = function(type) {
+  this.length = 0.75;
+}
+
+/**
+* @function addNode(name, data)
+* @param name unique identifier
+* @param data data
+* Check if the node is already in the atlas. If not then 
+* create it. Regardless, return the node object
+*/
+var addNode = function(atlas, name, data) {
+  var node = atlas.getNode(name);
+  return (node === undefined) ? atlas.addNode(name, data) : node;
+}    
+  
+/**
 * @function buildAtlas
-* @param samples // array of samples
+* @param samples // array of Samples
 * Givin an array of Samples, return an Atlas in the format
 * required by arbor.js
 */
 var buildAtlas = function(samples) {
   var atlas = arbor.ParticleSystem(new System);
-  // Create a sample node
-/*
+  var sample, node, data;
+  // Create a sample node and its edges & add it to the atlas
   samples.forEach(function (s) {
-    var data = new Data(s.name, "sample", false, false, s.filePath);
-    var node = new Node(s.id, data);
-    });
-*/
+    data = new Data(s.name, "sample", false, false, s.filePath);
+    sample = addNode(atlas, s.id, data);
+    // create the edge nodes
+    data = new Data(s.macro, "macro", false, false, "");
+    node = addNode(atlas, s.macro, data);
+    atlas.addEdge(node, sample, new Edge("macro"));
+
+    data = new Data(s.messo, "messo", false, false, "");
+    node = addNode(atlas, s.messo, data);
+    atlas.addEdge(node, sample, new Edge("messo"));
+
+    for (var i=0; i<s.micro.length; i++) {
+      data = new Data(s.micro[i], "micro", false, false, "");
+      node = addNode(atlas, s.micro[i], data);
+      atlas.addEdge(node, sample, new Edge("micro"));
+    }
+});
+
   return atlas;
 }
 

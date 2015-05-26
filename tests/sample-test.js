@@ -1,5 +1,4 @@
-var tFile = {
-  samples:
+var tSamples = 
   [ 
     {
     name: "bass001", 
@@ -10,7 +9,7 @@ var tFile = {
     filePath: "./samples/bass001" 
     }
   ]
-}
+
 
 window.onload = function() {
   test("Sample Construction & Initialization", function() {
@@ -24,9 +23,10 @@ window.onload = function() {
   test("Sample Getters/Setters", function() {
     pause();
     setTimeout(function() {
-      var sFile = getSamples("./samples.json");
-      console.log("sFile: ", sFile);
-      assert(sFile.samples.length === tFile.samples.length, "getSampleFile returns the samples array");
+      var samples = getSamples("./samples.json");
+      console.log("samples: ", samples);
+      assert(samples.length === tSamples.length &&
+             samples[0].id != null, "getSampleFile returns the samples array");
       resume();
       }, 0);
   });
