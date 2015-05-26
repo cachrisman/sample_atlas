@@ -11,7 +11,6 @@
 * (http://arborjs.org/reference) for details on parameters.
 * For now we'll use the defaults
 */
-
 var System = function(repulsion, stiffness, friction,
                       gravity, fps, dt, precision) {
   this.repulsion = 1000;
@@ -21,25 +20,10 @@ var System = function(repulsion, stiffness, friction,
   this.fps = 55;
   this.dt = 0.02;
 }
-
-/**
-* @Constructor Node
-* @param name String (Unique ID) // read only
-* @param data Data;
-* Constructs a new Node.  See See [Arbor Reference]
-* (http://arborjs.org/reference) for details on parameters.
-*
-*/
-
-var Node = function (name, data) {
-  this.name = name;
-  this.data = data;
-}
-
 /**
 * @Constructor Data
 * @param label String  // name of the node 
-* @param type "macro" | "messo" | "micro" | "sample",
+* @param type "root" | "macro" | "messo" | "micro" | "sample",
 * @param visible Boolean,
 * @param selected Boolean,
 * @param filePath pathToFile // path to sample file, sample's only
@@ -49,22 +33,54 @@ var Node = function (name, data) {
 * @param p: Point // the position of the node (in system coordinates (i.e., 0, 0 = top-left corner))
 */
 
-var Data = function (label, type, visible, selected,
-                     filePath, color, mass, fixed, point) {
+var Data = function (label, type) {
   this.label = label;
   this.type = type;
-  this.visible = visible;
-  this.selected = selected;
-  this.filePath = filePath;
-  this.color = "#000";
+  this.isVisible = false;
+  this.isSelected = false;
+  this.filePath = "";
+  this.color = "black";
   this.mass = 1.0;
   this.fixed = false;
   this.point = arbor.Point;
 }
 
+Data.prototype.setColor = function() {
+  switch(this.type) {
+    case "sample":
+    this.color = "orange";
+    break;
+    case "micro":
+    this.color = "blue";
+    break;
+    case "messo":
+    this.color = "green";
+    break;
+    case "macro":
+    this.color = "red";
+    break;
+    case "root":
+    this.color = "brown";
+    break;
+  }
+}
+
+Data.prototype.setVisibility = function (isVisible) {
+  this.isVisible = isVisible;
+}
+
+
+Data.prototype.setSelected = function(isSelected) {
+  this.isSelected = isSelected;
+}
+
+Data.prototype.setFilePath = function(pathToFile) {
+  this.filePath = pathToFile;
+}
+
 /**
 * @Constructor Edge
-* @param type "macro" | "messo" | "micro" | "sample",
+* @param type "root" | "macro" | "messo" | "micro" | "sample",
 * Return an Edge data attribute based on the type of Node
 */
 var Edge = function(type) {
@@ -80,35 +96,59 @@ var Edge = function(type) {
 */
 var addNode = function(atlas, name, data) {
   var node = atlas.getNode(name);
-  return (node === undefined) ? atlas.addNode(name, data) : node;
+  if (node === undefined) {
+    data.setColor();
+    data.setSelected(false); 
+    // roots, macros, micros are initially visible
+    if (data.type.label === "root" ||
+        name === "macro" || name === "micro" ) {
+          data.setVisibility(true);
+    }
+    else {
+      data.setVisibility(false);
+    }
+    node = atlas.addNode(name, data);
+  }
+  return node;
 }    
   
 /**
 * @function buildAtlas
 * @param samples // array of Samples
 * Givin an array of Samples, return an Atlas in the format
-* required by arbor.js
+* outlined by arbor.js
 */
 var buildAtlas = function(samples) {
+  var sample, node, macro, data;
+
   var atlas = arbor.ParticleSystem(new System);
-  var sample, node, data;
+
+  // create the root nodes
+  var type = addNode(atlas, "Type", new Data("Type", "root"));
+  var mode = addNode(atlas, "Mode", new Data("Mode", "root"));
+
   // Create a sample node and its edges & add it to the atlas
   samples.forEach(function (s) {
-    data = new Data(s.name, "sample", false, false, s.filePath);
+    data = new Data(s.name, "sample");
+    data.setFilePath(s.filePath);
     sample = addNode(atlas, s.id, data);
     // create the edge nodes
-    data = new Data(s.macro, "macro", false, false, "");
-    node = addNode(atlas, s.macro, data);
-    atlas.addEdge(node, sample, new Edge("macro"));
+    data = new Data(s.macro, "macro", "");
+    macro = addNode(atlas, s.macro, data);
+    atlas.addEdge(type, macro, new Edge("root", "macro"));
+    atlas.addEdge(macro, sample, new Edge("macro", "sample"));
 
-    data = new Data(s.messo, "messo", false, false, "");
+    data = new Data(s.messo, "messo");
     node = addNode(atlas, s.messo, data);
-    atlas.addEdge(node, sample, new Edge("messo"));
+    atlas.addEdge(macro, node, new Edge("macro", "messo"));
+    atlas.addEdge(node, sample, new Edge("messo", "sample"));
+
 
     for (var i=0; i<s.micro.length; i++) {
       data = new Data(s.micro[i], "micro", false, false, "");
       node = addNode(atlas, s.micro[i], data);
-      atlas.addEdge(node, sample, new Edge("micro"));
+      atlas.addEdge(mode, node, new Edge("root", "micro"));
+      atlas.addEdge(node, sample, new Edge("micro", "sample"));
     }
 });
 
