@@ -57,10 +57,43 @@ window.onload = function() {
       assert(sNode.data.isVisible, "Rhodes001 is now visible");
       var edges = atlas.getEdgesFrom(mNode)
       assert(edges[0].data.isVisible, "Edge is visible");
+      assert(sampleVisible(atlas, mNode), "A macro is selected");
       handleNode(atlas, mNode);
       assert(!mNode.data.isSelected, "Piano/Keys is deselected");
       assert(!sNode.data.isVisible, "Rhodes001 is not visible");
       assert(!edges[0].data.isVisible, "Edge is not visible");
+      assert
+      resume();
+      }, 0);
+  });
+  test("Sample Play/Stop Methods", function() {
+    pause();
+    setTimeout(function() {
+      var samples = getSamples("./two_samples.json");
+      assert(samples.length === 2, "Samples loaded");
+      var atlas = buildAtlas(samples);
+      assert(atlas !== undefined, "buildAtlas() returns a new atlas");
+      var mNode = atlas.getNode("Piano/Keys");
+      assert(!mNode.data.isSelected, "Piano/Keys not selected");
+      var sNode = atlas.getNode(samples[1].id);
+      assert(!sNode.data.isVisible, "Rhodes001 not visible");
+      handleNode(atlas, mNode);
+      assert(mNode.data.isSelected, "Piano/Keys is now selected");
+      assert(sNode.data.isVisible, "Rhodes001 is now visible");
+      var edges = atlas.getEdgesFrom(mNode)
+      assert(edges[0].data.isVisible, "Edge is visible");
+      // stop play the sample and console log
+      handleNode(atlas, sNode);
+      // stop playing the sample and console log
+      setTimeout(function() {
+        handleNode(atlas, sNode);
+      }, 5000);
+
+      handleNode(atlas, mNode);
+      assert(!mNode.data.isSelected, "Piano/Keys is deselected");
+      assert(!sNode.data.isVisible, "Rhodes001 is not visible");
+      assert(!edges[0].data.isVisible, "Edge is not visible");
+      assert
       resume();
       }, 0);
   });

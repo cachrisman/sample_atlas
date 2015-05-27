@@ -5,7 +5,7 @@
         "messo": "Analog Bass", 
         "micro": ["Dry", "FM"], 
         "technical": "", 
-        "filePath": "./samples/bass001"
+        "filePath": "../demo/sax-phrase-short.wav"
     },
     {
         "name": "rhodes001", 
@@ -13,6 +13,6 @@
         "messo": "Grand Piano", 
         "micro": ["Long Evolving", "Digital"], 
         "technical": "", 
-        "filePath": "./samples/rhodes001"
+        "filePath": "../demo/sinewave.wav"
     }
 ]

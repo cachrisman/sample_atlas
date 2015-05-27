@@ -24,6 +24,13 @@ Sample.prototype.setId = function() {
       .substring(1);
 }
 
+/*
+Sample.prototype.setAudio = function() {
+  this.audio = new Audio(this.filePath);
+}
+*/
+
+
 /**
 * @function getSamples
 * @param pathToFile // path to JSON file
@@ -47,7 +54,8 @@ var getSamples = function (pathToFile) {
   fileData.forEach(function(s) {
     var sample = new Sample(s.name, s.macro, s.messo,
                             s.micro, s.technical, s.filePath);
-    sample.setId();                   
+    sample.setId();
+    //sample.setAudio();
     samples.push(sample);
   });
 

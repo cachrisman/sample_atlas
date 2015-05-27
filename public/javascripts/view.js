@@ -141,7 +141,7 @@
 
   $(document).ready(function(){
 
-    var demoSamples = getSamples("../demo/samples.json");
+    var demoSamples = getSamples("../demo/two_samples.json");
     var atlas = buildAtlas(demoSamples);
 
    // Our newly created renderer will have its .init() method called shortly by 

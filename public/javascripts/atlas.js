@@ -84,8 +84,14 @@ Data.prototype.initSelected = function() {
   this.isSelected = false;
 }
 
+// Samples only
 Data.prototype.setFilePath = function(pathToFile) {
   this.filePath = pathToFile;
+}
+
+// Samples only
+Data.prototype.setAudio = function() {
+  this.audio = new Audio(this.filePath);
 }
 
 /**
@@ -105,6 +111,32 @@ var Edge = function(source, target) {
 }
 
 /**
+* @function isMacroSelected(atlas) 
+* @param atlas the particle system
+* return true if one of the macros is selected
+*/
+var isMacroSelected = function(atlas) {
+  var edges = atlas.getEdgesFrom(atlas.getNode("Type"));
+  var numMacros = edges.length;
+  var macroSelected = false;
+  var i = 0;
+  do {
+    macroSelected = edges[i].target.data.isSelected;
+    i++;
+  } while (!macroSelected && i < numMacros);
+
+  return macroSelected;
+}
+
+/**
+* @function sampleVisible(atlas, node)
+* @param node
+*/
+var sampleVisible = function(atlas, source, target) {
+  return isMacroSelected(atlas);
+}
+
+/**
 * @function selectNode(node)
 * @param node A selected node
 * Todo: If sample node, play the sample??
@@ -112,12 +144,18 @@ var Edge = function(source, target) {
 
 var selectNode = function (atlas, node) {
   node.data.isSelected = true;
+  // Am I a sample node -> play the sample
+  if (node.data.type === "sample") {
+    console.log("started playing: ", node.data.filePath);
+    node.data.audio.play();
+  } else {
   // make all the edges and end nodes visible
-  var edges = atlas.getEdgesFrom(node);
-  edges.forEach(function (item) {
-    item.data.isVisible = true;
-    item.target.data.isVisible = true;
-  });
+    var edges = atlas.getEdgesFrom(node);
+    edges.forEach(function (item) {
+      item.data.isVisible = true;
+      item.target.data.isVisible = true;
+    });
+  }
   return;
 }
 
@@ -129,11 +167,20 @@ var selectNode = function (atlas, node) {
 
 var deselectNode = function (atlas, node) {
   node.data.isSelected = false;
-  var edges = atlas.getEdgesFrom(node);
-  edges.forEach(function (item) {
-    item.data.isVisible = false;
-    item.target.data.isVisible = false;
-  });
+  if (node.data.type === "sample") {
+    console.log("stopped playing: ", node.data.filePath);
+    node.data.audio.pause();
+    node.data.audio.currentTime = 0;
+  } else {
+    var edges = atlas.getEdgesFrom(node);
+    edges.forEach(function (item) {
+      item.data.isVisible = false;
+      if (item.source.data.type !== "messo" &&
+          item.source.data.type !== "micro") {
+        item.target.data.isVisible = false;
+      }
+    });
+  }
   return;
 }
 
@@ -186,6 +233,7 @@ var buildAtlas = function(samples) {
   samples.forEach(function (s) {
     data = new Data(s.name, "sample");
     data.setFilePath(s.filePath);
+    data.setAudio();
     sample = addNode(atlas, s.id, data);
     // create the edge nodes
     data = new Data(s.macro, "macro", "");
