@@ -9,13 +9,19 @@
 */
 
 var Sample = function (name, macro, messo, micro, technical, filePath) {
-  this.id = Date.now();
+  this.id = 0;
   this.name = name;
   this.macro = macro;
   this.messo = messo;
   this.micro = micro;
   this.technical = technical;
   this.filePath = filePath;
+}
+
+Sample.prototype.setId = function() {
+    this.id =  Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
 }
 
 /**
@@ -39,8 +45,10 @@ var getSamples = function (pathToFile) {
 
   // Add the sample to the sample array
   fileData.forEach(function(s) {
-    samples.push(new Sample(s.name, s.macro, s.messo,
-                            s.micro, s.technical, s.filePath));
+    var sample = new Sample(s.name, s.macro, s.messo,
+                            s.micro, s.technical, s.filePath);
+    sample.setId();                   
+    samples.push(sample);
   });
 
   return samples;

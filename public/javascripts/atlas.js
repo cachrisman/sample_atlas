@@ -135,6 +135,7 @@ var buildAtlas = function(samples) {
     // create the edge nodes
     data = new Data(s.macro, "macro", "");
     macro = addNode(atlas, s.macro, data);
+    // todo: check to see only one edge is added!!!
     atlas.addEdge(type, macro, new Edge("root", "macro"));
     atlas.addEdge(macro, sample, new Edge("macro", "sample"));
 

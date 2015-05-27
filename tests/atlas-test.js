@@ -50,7 +50,7 @@ window.onload = function() {
              "Mode node has edges to Long Evolving, Digital FM & Dry");
       var id = samples[1].id;
       var sNode = atlas.getNode(id);
-      assert(sNode.name === id, "Sample node added to atlas");
+      assert(sNode.data.label === "rhodes001", "Piano sample added to atlas");
       var node = atlas.getNode("Piano/Keys");
       assert(node.data.type === "macro", "Atlas has macro node");
       assert(node.data.color === "red", "macro node color is red");

@@ -1,0 +1,18 @@
+[
+    {
+        "name": "bass001", 
+        "macro": "Bass",
+        "messo": "Analog Bass", 
+        "micro": ["Dry", "FM"], 
+        "technical": "", 
+        "filePath": "./samples/bass001"
+    },
+    {
+        "name": "rhodes001", 
+        "macro": "Piano/Keys",
+        "messo": "Grand Piano", 
+        "micro": ["Long Evolving", "Digital"], 
+        "technical": "", 
+        "filePath": "./samples/rhodes001"
+    }
+]
