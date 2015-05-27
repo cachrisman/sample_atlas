@@ -45,13 +45,14 @@
           // pt2:  {x:#, y:#}  target position in screen coords
 
           // draw a line from pt1 to pt2
-          //AK ctx.strokeStyle = "rgba(0,0,0, .333)"
-          ctx.strokeStyle = "rgba(0,0,0, .333)"
-          ctx.lineWidth = 1
-          ctx.beginPath()
-          ctx.moveTo(pt1.x, pt1.y)
-          ctx.lineTo(pt2.x, pt2.y)
-          ctx.stroke()
+          if (edge.data.isVisible) {
+            ctx.strokeStyle = "rgba(0,0,0, .333)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(pt1.x, pt1.y);
+            ctx.lineTo(pt2.x, pt2.y);
+            ctx.stroke();
+          }
         })
 
         particleSystem.eachNode(function(node, pt){
@@ -59,11 +60,16 @@
           // pt:   {x:#, y:#}  node position in screen coords
 
           var w = 10
+          /*
+           // circle
           ctx.beginPath();
           ctx.arc(pt.x, pt.y, w, 0, 6.28318531, false);
           ctx.fill();
+          */
+          if (node.data.isVisible) {
           ctx.fillStyle = node.data.color;
           ctx.fillText(node.data.label, pt.x-w, pt.y-w);
+          }
         })    			
       },
       
@@ -76,6 +82,14 @@
         var handler = {
           clicked:function(e){
             var pos = $(canvas).offset();
+            var s = {x:e.pageX-pos.left, y:e.pageY-pos.top};
+
+            nearest = particleSystem.nearest(s);
+            if (!nearest) return
+
+            var node = nearest.node;
+            handleNode(particleSystem, node);
+            /*
             _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
             dragged = particleSystem.nearest(_mouseP);
 
@@ -86,6 +100,8 @@
 
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
+            */
+            
 
             return false
           },
@@ -125,7 +141,7 @@
 
   $(document).ready(function(){
 
-    var demoSamples = getSamples("../demo/two_samples.json");
+    var demoSamples = getSamples("../demo/samples.json");
     var atlas = buildAtlas(demoSamples);
 
    // Our newly created renderer will have its .init() method called shortly by 

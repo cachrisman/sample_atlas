@@ -1,10 +1,58 @@
 [
     {
-        "name": "bass001", 
+        "name": "2Pranged", 
         "macro": "Bass",
         "messo": "Analog Bass", 
         "micro": ["Dry", "FM"], 
-        "technical": "", 
-        "filePath": "./samples/bass001"
+        "technical": [], 
+        "filePath": "./samples/2Pranged.wav"
+    },
+    {
+        "name": "Acid Bass", 
+        "macro": "Bass",
+        "messo": "Bass Line", 
+        "micro": ["Dry", "Glide/Pitch Mod"], 
+        "technical": [], 
+        "filePath": "./samples/AcidBass.wav"
+    },
+    {
+        "name": "3.5 Floppy Bass",
+        "macro": "Bass",
+        "messo": "Digital Bass",
+        "micro": ["Synthetic"],
+        "technical": [],
+        "filePath": "./samples/35floppybass.wav"
+    },
+    {
+        "name": "Absolute",
+        "macro": "Bass",
+        "messo": "Digital Bass",
+        "micro": ["Additive", "Percussive"],
+        "technical": [],
+        "filePath": "./samples/absolute.wav"
+    },
+    {
+        "name": "Addendum",
+        "macro": "Bass",
+        "messo": "Digital Bass",
+        "micro": ["Chord", "Monophonic"],
+        "technical": [],
+        "filePath": "./samples/addendum.wav"
+    },
+    {
+        "name": "Amberton",
+        "macro": "Drums",
+        "messo": "Acoustic Drum Set",
+        "micro": ["Sample-based"],
+        "technical": [],
+        "filePath": "./samples/amberton.wav"
+    },
+    {
+        "name": "Crash Choke",
+        "macro": "Drums",
+        "messo": "Cymbal",
+        "micro": ["Dry", "Sample-based"],
+        "technical": [],
+        "filePath": "./samples/crashchoke.wav"
     }
 ]

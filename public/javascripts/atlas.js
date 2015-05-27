@@ -45,7 +45,7 @@ var Data = function (label, type) {
   this.point = arbor.Point;
 }
 
-Data.prototype.setColor = function() {
+Data.prototype.initColor = function() {
   switch(this.type) {
     case "sample":
     this.color = "orange";
@@ -65,13 +65,23 @@ Data.prototype.setColor = function() {
   }
 }
 
-Data.prototype.setVisibility = function (isVisible) {
-  this.isVisible = isVisible;
+Data.prototype.initVisibility = function() {
+  switch (this.type) {
+    case "sample":
+    this.isVisible = false
+    break;
+    case "messo":
+    this.isVisible = false;
+    break
+    default:
+    // roots, macros, micros are initially visible
+    this.isVisible = true;
+    break;
+    }
 }
 
-
-Data.prototype.setSelected = function(isSelected) {
-  this.isSelected = isSelected;
+Data.prototype.initSelected = function() {
+  this.isSelected = false;
 }
 
 Data.prototype.setFilePath = function(pathToFile) {
@@ -81,10 +91,62 @@ Data.prototype.setFilePath = function(pathToFile) {
 /**
 * @Constructor Edge
 * @param type "root" | "macro" | "messo" | "micro" | "sample",
-* Return an Edge data attribute based on the type of Node
+* Return an Edge data attribute based on the type of Node.
+* If its a root (i.e, Type or Mode) then set its visiblity
+* to true;
 */
-var Edge = function(type) {
+var Edge = function(source, target) {
   this.length = 0.75;
+  if (source === "root") {
+    this.isVisible = true;
+  } else {
+    this.isVisible = false;
+  }
+}
+
+/**
+* @function selectNode(node)
+* @param node A selected node
+* Todo: If sample node, play the sample??
+*/
+
+var selectNode = function (atlas, node) {
+  node.data.isSelected = true;
+  // make all the edges and end nodes visible
+  var edges = atlas.getEdgesFrom(node);
+  edges.forEach(function (item) {
+    item.data.isVisible = true;
+    item.target.data.isVisible = true;
+  });
+  return;
+}
+
+/**
+* @function deselectNode(node)
+* @param node A deselected node
+* Todo: If sample node, stop playing the sample??
+*/
+
+var deselectNode = function (atlas, node) {
+  node.data.isSelected = false;
+  var edges = atlas.getEdgesFrom(node);
+  edges.forEach(function (item) {
+    item.data.isVisible = false;
+    item.target.data.isVisible = false;
+  });
+  return;
+}
+
+/**
+* @function handleNode(node)
+* @param node A selected or deselected node
+* View has detected that the node has been
+* clicked by the user.  Do something about
+* it
+*/
+
+var handleNode = function (atlas, node) {
+  (node.data.isSelected) ? deselectNode(atlas, node) : selectNode(atlas, node);
 }
 
 /**
@@ -97,16 +159,9 @@ var Edge = function(type) {
 var addNode = function(atlas, name, data) {
   var node = atlas.getNode(name);
   if (node === undefined) {
-    data.setColor();
-    data.setSelected(false); 
-    // roots, macros, micros are initially visible
-    if (data.type.label === "root" ||
-        name === "macro" || name === "micro" ) {
-          data.setVisibility(true);
-    }
-    else {
-      data.setVisibility(false);
-    }
+    data.initColor();
+    data.initSelected();
+    data.initVisibility();
     node = atlas.addNode(name, data);
   }
   return node;
@@ -146,7 +201,7 @@ var buildAtlas = function(samples) {
 
 
     for (var i=0; i<s.micro.length; i++) {
-      data = new Data(s.micro[i], "micro", false, false, "");
+      data = new Data(s.micro[i], "micro");
       node = addNode(atlas, s.micro[i], data);
       atlas.addEdge(mode, node, new Edge("root", "micro"));
       atlas.addEdge(node, sample, new Edge("micro", "sample"));
