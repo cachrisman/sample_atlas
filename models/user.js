@@ -1,57 +1,71 @@
-var bcrypt = require("bcrypt");
-var salt = bcrypt.genSaltSync(10);
 var mongoose = require("mongoose");
 
 var userSchema = new mongoose.Schema({
-  email: String,
-  passwordDigest: String
+  email: {
+    type: String,
+    lowercase: true,
+    required: true,
+    index: {
+      unique: true
+    }
+  },
+  passwordDigest: {
+    type: String,
+    required: true
+  },
+  firstName: {
+    type: String,
+    default: ""
+  },
+  lastName: {
+    type: String,
+    default: ""
+  }
 });
 
-// Sign Up
+var bcrypt = require("bcrypt");
 
-// create secure takes a password and email in params
-userSchema.statics.createSecure = function (email, password, cb) {
-  // saves the user email and hashes the password
-  var that = this; // save the context
-  bcrypt.genSalt(function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
-      console.log(hash);
-      that.create({
-        email: email,
-        passwordDigest: hash
-       }, cb)
-    });
-  })
+var confirm = function(password, passwordCon) {
+  return password = passwordCon;
 };
 
-// Sign In
+userSchema.statics.createSecure = function (params, cb) {
 
-userSchema.statics.encryptPassword = function (password) {
-   var hash = bcrypt.hashSync(password, salt);
-   return hash;
- };
+  var isConfirmed = confirm(params.password, params.password_confirmation);
 
+  if (!isConfirmed) {
+    return cb("Passwords Should Match", null);
+  }
 
-userSchema.statics.authenticate = function(email, password, cb) {
-  // find just one user with the email
+  var that = this;
+  bcrypt.hash(params.password, 12, function (err, hash) {
+    params.passwordDigest = hash;
+    that.create(params, cb);
+  });
+};
+
+userSchema.methods.checkPassword = function (password, cb) {
+  var user = this;
+  console.log("checkPassword()", user);
+  bcrypt.compare(password,
+                 user.passwordDigest, function (err, isMatch) {
+                   if (isMatch) {
+                     cb(null, user);
+                   } else {
+                     cb("OOPS", null);
+                   }
+                 });
+};
+
+userSchema.statics.authenticate = function (params, cb) {
+  console.log("authenticate()", params);
   this.findOne({
-     email: email // find user by email
-    }, // then if user exits with email
-    function(err, user){
-      if (user === null){
-        throw new Error("Username does not exist");
-      } else if (user.checkPassword(password)){ // verify password
-        cb(null, user); // send back the user
-      } else {
-        throw new Error("Invalid password");
-      }
-    })
- }
-
-userSchema.methods.checkPassword = function(password) {
-        return bcrypt.compareSync(password, this.passwordDigest);
+    email: params.email
+    },
+    function (err, user) {
+      user.checkPassword(params.password, cb);
+    });
 };
-
 
 var User = mongoose.model("User", userSchema);
 
