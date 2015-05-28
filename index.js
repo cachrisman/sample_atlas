@@ -12,6 +12,10 @@ app.use(session({
   saveUnitialized: true
 }));
 
+app.use(express.static("public"));
+app.use(express.static("lib"));
+app.use(express.static("demo"));
+
 var loginHelpers = function(req, res, next) {
 
   req.login = function (user) {
@@ -48,9 +52,9 @@ app.get("/", function (req, res) {
   res.sendFile(homePath);
 });
 
-app.get("/signup", function(req, res) {
-  console.log("get()", "/signup");
-  var signupPath = path.join(views, "signup.html");
+app.get("/register", function(req, res) {
+  console.log("get()", "/register");
+  var signupPath = path.join(views, "register.html");
   res.sendFile(signupPath);
 });
 
@@ -63,7 +67,7 @@ app.post("/users", function(req, res) {
         res.send(user);
       } else {
         //console.log("createSecure() failed");
-        res.redirect("/signup");
+        res.redirect("/register");
       }
     });
 });
@@ -83,7 +87,7 @@ app.post("/login", function(req, res) {
                   function (err, user) {
                     if (!err) {
                       req.login(user);
-                      res.redirect("/profile");
+                      res.redirect("/demo");
                     } else {
                       res.redirect("/login");
                     }
@@ -99,6 +103,22 @@ app.get("/profile", function(req, res) {
     }
   });
 });
+
+app.get("/demo", function(req, res) {
+  var demoPath = path.join(views, "demo.html");
+  console.log("demoPath: ", demoPath);
+  res.sendFile(demoPath);
+/*
+  req.currentUser(function (err, user) {
+    if (!err) {
+      res.send(user.email);
+    } else {
+      res.redirect("/login");
+    }
+  });
+*/
+});
+
 
 app.get("/logout", function(req, res) {
   req.logout();
