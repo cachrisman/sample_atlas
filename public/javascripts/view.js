@@ -36,7 +36,7 @@
         // which allow you to step through the actual node objects but also pass an
         // x,y point in the screen's coordinate system
         // 
-        ctx.fillStyle = "white"  // set canvas background to white
+        ctx.fillStyle = "#15252d"  // set canvas background to brand
         ctx.fillRect(0,0, canvas.width, canvas.height)
         
         particleSystem.eachEdge(function(edge, pt1, pt2){
@@ -46,7 +46,7 @@
 
           // draw a line from pt1 to pt2
           if (edge.data.isVisible) {
-            ctx.strokeStyle = "rgba(0,0,0, .333)";
+            ctx.strokeStyle = edge.data.color;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(pt1.x, pt1.y);
@@ -59,7 +59,6 @@
           // node: {mass:#, p:{x,y}, name:"", data:{}}
           // pt:   {x:#, y:#}  node position in screen coords
 
-          var w = 10
           /*
            // circle
           ctx.beginPath();
@@ -67,8 +66,14 @@
           ctx.fill();
           */
           if (node.data.isVisible) {
-          ctx.fillStyle = node.data.color;
-          ctx.fillText(node.data.label, pt.x-w, pt.y-w);
+            var w = ctx.measureText(node.data.label||"").width + 6;
+            ctx.clearRect(pt.x-w/2, pt.y-7, w,14)
+            //var fontSize = (node.data.isSelected * 1.3) * node.data.fontSize;
+            //var fontWeight = node.data.fontWeight;
+            ctx.font = node.data.fontSize + "px brandon-grotesque " + node.data.fontWeight;
+            ctx.textAlign = "center"
+            ctx.fillStyle = node.data.color;
+            ctx.fillText(node.data.label, pt.x, pt.y+4);
           }
         })    			
       },
@@ -76,31 +81,34 @@
       initMouseHandling:function(){
         // no-nonsense drag and drop (thanks springy.js)
         var dragged = null;
+        var mouseP = null;
 
         // set up a handler object that will initially listen for mousedowns then
         // for moves and mouseups while dragging
         var handler = {
           clicked:function(e){
             var pos = $(canvas).offset();
-            var s = {x:e.pageX-pos.left, y:e.pageY-pos.top};
+            if (mode === "demo") {
+              var s = {x:e.pageX-pos.left, y:e.pageY-pos.top};
 
-            nearest = particleSystem.nearest(s);
-            if (!nearest) return
+              nearest = particleSystem.nearest(s);
+              if (!nearest) return
 
-            var node = nearest.node;
-            handleNode(particleSystem, node);
-            /*
-            _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
-            dragged = particleSystem.nearest(_mouseP);
+              var node = nearest.node;
+              handleNode(particleSystem, node);
+            } else {
 
-            if (dragged && dragged.node !== null){
-              // while we're dragging, don't let physics move the node
-              dragged.node.fixed = true
+              mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+              dragged = particleSystem.nearest(mouseP);
+
+              if (dragged && dragged.node !== null){
+                // while we're dragging, don't let physics move the node
+                dragged.node.fixed = true
+              }
+
+              $(canvas).bind('mousemove', handler.dragged)
+              $(window).bind('mouseup', handler.dropped)
             }
-
-            $(canvas).bind('mousemove', handler.dragged)
-            $(window).bind('mouseup', handler.dropped)
-            */
             
 
             return false
@@ -124,7 +132,7 @@
             dragged = null
             $(canvas).unbind('mousemove', handler.dragged)
             $(window).unbind('mouseup', handler.dropped)
-            _mouseP = null
+            mouseP = null
             return false
           }
         }
@@ -141,8 +149,7 @@
 
   $(document).ready(function(){
 
-    var demoSamples = getSamples("two_samples.json");
-    var atlas = buildAtlas(demoSamples);
+    var atlas = buildAtlas(samples);
 
    // Our newly created renderer will have its .init() method called shortly by 
     atlas.renderer = Renderer("#viewport")

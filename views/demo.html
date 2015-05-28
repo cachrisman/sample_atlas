@@ -3,15 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <title>Sample Atlas V0.0.1</title>
-  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <!— JQuery —>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+  <!— Bootstrap —>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="//use.typekit.net/lkv0hqz.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <script type="text/javascript" src="arbor.js"></script>
   <script type="text/javascript" src="javascripts/sample.js"></script>
   <script type="text/javascript" src="javascripts/atlas.js"></script>
+  <script type="text/javascript" src="javascripts/demo.js"></script>
   <script type="text/javascript" src="javascripts/view.js"></script>
 </head>
 <body>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img id="brand" alt="Brand" src="assets/sampleatlas-color2.png" />
+        </a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form method="POST" action="/logout">
+            <button class="button" type="submit">Log Out</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <canvas id="viewport" width="1278" height="1022"></canvas>
 </body>
 </html>

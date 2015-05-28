@@ -135,8 +135,16 @@ app.get("/demo", function(req, res) {
 
 app.get("/logout", function(req, res) {
   req.logout();
-  req.redirect("/");
+  console.log("get()", "/logout");
+  var loginPath = path.join(views, "home.html");
+  res.sendFile(loginPath);
 });
+
+app.post("/logout", function(req, res) {
+  console.log("post()", "/logout");
+  res.redirect("/logout");
+});
+
 
 
 // List all the accounts for debugging

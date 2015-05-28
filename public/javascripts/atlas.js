@@ -39,7 +39,7 @@ var Data = function (label, type) {
   this.isVisible = false;
   this.isSelected = false;
   this.filePath = "";
-  this.color = "black";
+  this.color = "";
   this.mass = 1.0;
   this.fixed = false;
   this.point = arbor.Point;
@@ -48,20 +48,29 @@ var Data = function (label, type) {
 Data.prototype.initColor = function() {
   switch(this.type) {
     case "sample":
-    this.color = "orange";
+    this.color = " #00e676";
     break;
     case "micro":
-    this.color = "blue";
+    this.color = "#0fc1c9";
     break;
     case "messo":
-    this.color = "green";
+    this.color = "fcd735";
     break;
     case "macro":
-    this.color = "red";
+    this.color = "#ec5250";
     break;
     case "root":
     this.color = "brown";
     break;
+  }
+}
+
+Data.prototype.initFont = function() {
+  this.fontSize = 12;
+  this.fontWeight = "normal";
+  if (this.type === "root") {
+    this.fontSize = 18;
+    this.fontWeight = "bold"
   }
 }
 
@@ -82,6 +91,9 @@ Data.prototype.initVisibility = function() {
 
 Data.prototype.initSelected = function() {
   this.isSelected = false;
+  if (this.type === "root") {
+    this.isSelected = true;
+  }
 }
 
 // Samples only
@@ -108,6 +120,7 @@ var Edge = function(source, target) {
   } else {
     this.isVisible = false;
   }
+  this.color = "rgba(255, 255, 255, 0.333)";
 }
 
 /**
@@ -144,6 +157,8 @@ var sampleVisible = function(atlas, source, target) {
 
 var selectNode = function (atlas, node) {
   node.data.isSelected = true;
+  node.data.fontWeight = "bold";
+  node.data.fontSize = 18;
   // Am I a sample node -> play the sample
   if (node.data.type === "sample") {
     console.log("started playing: ", node.data.filePath);
@@ -167,6 +182,8 @@ var selectNode = function (atlas, node) {
 
 var deselectNode = function (atlas, node) {
   node.data.isSelected = false;
+  node.data.fontWeight = "normal";
+  node.data.fontSize = 12;
   if (node.data.type === "sample") {
     console.log("stopped playing: ", node.data.filePath);
     node.data.audio.pause();
@@ -209,6 +226,7 @@ var addNode = function(atlas, name, data) {
     data.initColor();
     data.initSelected();
     data.initVisibility();
+    data.initFont();
     node = atlas.addNode(name, data);
   }
   return node;
