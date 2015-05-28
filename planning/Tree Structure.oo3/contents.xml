@@ -1,0 +1,1074 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE outline PUBLIC "-//omnigroup.com//DTD OUTLINE 3.0//EN" "http://www.omnigroup.com/namespace/OmniOutliner/xmloutline-v3.dtd">
+<outline xmlns="http://www.omnigroup.com/namespace/OmniOutliner/v3">
+  <style-attribute-registry>
+    <style-attribute version="0" key="font-family" group="font" name="family" class="string">Helvetica</style-attribute>
+    <style-attribute version="1" key="font-fill" group="font" name="fill color" class="color">
+      <color w="0"/>
+    </style-attribute>
+    <style-attribute version="0" key="font-size" group="font" name="size" class="number" integral="0" min="1" max="65536">12</style-attribute>
+    <style-attribute version="0" key="font-weight" group="font" name="weight" class="number" integral="1" min="1" max="14">5</style-attribute>
+    <style-attribute version="0" key="item-to-note-space(com.omnigroup.OmniOutliner)" group="row" name="above note padding" class="number" integral="1" min="0" max="1000">0</style-attribute>
+    <style-attribute version="0" key="paragraph-alignment" group="paragraph" name="alignment" class="enum">
+      <enum-name-table default-value="4">
+        <enum-name-table-element value="0" name="left"/>
+        <enum-name-table-element value="1" name="right"/>
+        <enum-name-table-element value="2" name="center"/>
+        <enum-name-table-element value="3" name="justified"/>
+        <enum-name-table-element value="4" name="natural"/>
+      </enum-name-table>
+    </style-attribute>
+    <style-attribute version="0" key="paragraph-base-writing-direction" group="paragraph" name="writing direction" class="enum">
+      <enum-name-table default-value="-1">
+        <enum-name-table-element value="-1" name="natural"/>
+        <enum-name-table-element value="0" name="left-to-right"/>
+        <enum-name-table-element value="1" name="right-to-left"/>
+      </enum-name-table>
+    </style-attribute>
+    <style-attribute version="0" key="paragraph-line-height-multiple" group="paragraph" name="line height multiple" class="number" integral="0" min="0" max="1000">0</style-attribute>
+    <style-attribute version="0" key="text-background-color" group="text" name="background color" class="color">
+      <color w="0" a="0"/>
+    </style-attribute>
+  </style-attribute-registry>
+  <named-styles>
+    <named-style id="eUsXLp0Pv1g" name="Heading 1" display-order="0">
+      <style>
+        <value key="font-family">Helvetica Neue</value>
+        <value key="font-fill">
+          <color r="0.196247" g="0.196247" b="0.196247"/>
+        </value>
+        <value key="font-size">30</value>
+        <value key="font-weight">3</value>
+      </style>
+    </named-style>
+    <named-style id="d4-frBYwy2X" name="Heading 2" display-order="1">
+      <style>
+        <value key="font-family">Helvetica Neue</value>
+        <value key="font-fill">
+          <color r="0.196247" g="0.196247" b="0.196247"/>
+        </value>
+        <value key="font-size">18</value>
+      </style>
+    </named-style>
+    <named-style id="kRw332h0q-G" name="Heading 3" display-order="2">
+      <style>
+        <value key="font-family">Helvetica Neue</value>
+        <value key="font-size">13</value>
+        <value key="font-weight">6</value>
+      </style>
+    </named-style>
+    <named-style id="nU7Pax9sHwm" name="Highlight: Yellow" display-order="3">
+      <style>
+        <value key="text-background-color">
+          <color r="1" g="0.733334" b="0" a="0.25"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="m6c_M2fT6yP" name="Highlight: Red" display-order="4">
+      <style>
+        <value key="text-background-color">
+          <color r="0.94902" g="0.376471" b="0.466667" a="0.25"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="auoqZ5xVKeG" name="Highlight: Green" display-order="5">
+      <style>
+        <value key="text-background-color">
+          <color r="0.406736" g="0.736132" b="0.210461" a="0.25"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="hE9mXgl4a8m" name="Purple" display-order="6">
+      <style>
+        <value key="font-fill">
+          <color r="0.588981" g="0.38239" b="0.815403"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="l2kopvXC4ak" name="Blue" display-order="7">
+      <style>
+        <value key="font-fill">
+          <color r="0.227451" g="0.556863" b="0.929412"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="f7F2187eZ56" name="Bondi" display-order="8">
+      <style>
+        <value key="font-fill">
+          <color r="0" g="0.749538" b="0.75371"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="kJhkVDl2Xsd" name="Green" display-order="9">
+      <style>
+        <value key="font-fill">
+          <color r="0.406736" g="0.736132" b="0.210461"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="inNRQJ-da6E" name="Yellow" display-order="10">
+      <style>
+        <value key="font-fill">
+          <color r="1" g="0.733334" b="0"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="nAm7imW-teW" name="Orange" display-order="11">
+      <style>
+        <value key="font-fill">
+          <color r="1" g="0.568627" b="0.301961"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="jtC-ndQ7Pcw" name="Red" display-order="12">
+      <style>
+        <value key="font-fill">
+          <color r="0.94902" g="0.376471" b="0.466667"/>
+        </value>
+      </style>
+    </named-style>
+    <named-style id="dI8s4BxgdIs" name="Graphite" display-order="13">
+      <style>
+        <value key="font-fill">
+          <color r="0.419608" g="0.486275" b="0.647059"/>
+        </value>
+      </style>
+    </named-style>
+  </named-styles>
+  <settings>
+    <base-style>
+      <style>
+        <value key="font-family">Helvetica Neue</value>
+        <value key="font-size">13</value>
+        <value key="item-to-note-space(com.omnigroup.OmniOutliner)">4</value>
+        <value key="paragraph-base-writing-direction">left-to-right</value>
+        <value key="paragraph-line-height-multiple">1.1</value>
+      </style>
+    </base-style>
+    <print-info>
+      <print-info-key name="NSPaperName" type="string"></print-info-key>
+      <print-info-key name="OOScaleDocumentToFitPageWidth" type="boolean">true</print-info-key>
+    </print-info>
+    <auto-generate-level-styles>no</auto-generate-level-styles>
+  </settings>
+  <editor content-size="{1092, 1343}" outline-title-display-mode="always" column-titles-display-mode="auto" status-visible="no" hide-attachment-tags="yes" is-spellchecking-enabled="yes">
+    <drawer display="sections" width="185" palette-height="477"/>
+    <note-split-view height="141"/>
+    <selected-rows ids="i0ibFM0KU7I"/>
+    <selected-columns ids="jFqHUGd_Dg1"/>
+    <selected-characters range="{4, 0}"/>
+  </editor>
+  <outline-title>
+    <text>
+      <p>
+        <run>
+          <style>
+            <value key="font-size">12</value>
+            <value key="paragraph-alignment">center</value>
+          </style>
+          <lit><cell variable="OODocumentFilenameVariableIdentifier"/></lit>
+        </run>
+      </p>
+    </text>
+  </outline-title>
+  <columns>
+    <column id="dTpN3JwYpBn" type="text" width="18" minimum-width="18" maximum-width="18" text-export-width="1" is-note-column="yes">
+      <style>
+        <value key="font-fill">
+          <color r="0.33" g="0.33" b="0.33"/>
+        </value>
+        <value key="font-size">11</value>
+      </style>
+      <title>
+        <text>
+          <p/>
+        </text>
+      </title>
+    </column>
+    <column id="jFqHUGd_Dg1" type="text" width="1071" minimum-width="13" maximum-width="1000000" text-export-width="72" is-outline-column="yes">
+      <title>
+        <text>
+          <p>
+            <run>
+              <lit>Topic</lit>
+            </run>
+          </p>
+        </text>
+      </title>
+    </column>
+  </columns>
+  <root>
+    <style>
+      <value key="font-weight">6</value>
+    </style>
+    <item id="n9Cr4BPjkMA" expanded="yes">
+      <values>
+        <text>
+          <p>
+            <run>
+              <lit>Instruments</lit>
+            </run>
+          </p>
+        </text>
+      </values>
+      <children>
+        <item id="d325nA0BhUD" expanded="yes">
+          <values>
+            <text>
+              <p>
+                <run>
+                  <lit>Types</lit>
+                </run>
+              </p>
+            </text>
+          </values>
+          <children>
+            <item id="ewdmvSiES2o" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Bass</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="dt8-C7U-h-Y">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Subtype</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="fR8lxEqLmVl" expanded="yes">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Analog Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                      <children>
+                        <item id="kcI7BIG5MQU">
+                          <values>
+                            <text>
+                              <p>
+                                <run>
+                                  <lit>Modes</lit>
+                                </run>
+                              </p>
+                            </text>
+                          </values>
+                          <children>
+                            <item id="j5wFeOq0baH">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Additive</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="cfe_4NSaJ1q">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Arpeggiated</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="im1WBgm6Itx">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Chord</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="c-z5aFtyBi7">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Dry</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="k9-vbVcZPek">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>FM</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="nQtm6VW9EQk">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Glide/Pitch Mod</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="kjb_B6GF2pa">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Long Release</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="ksBAZT60NDX">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Long/Evolving</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="az1_UF5P2HZ">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Monophonic</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="mFMtaIkYWCT">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Percussive</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="pOyrAA73I6s">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Physical Model</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="c_8UH3g3KVV">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Processed</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="lHJ7cAWA-e0">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Sample-based</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="heD_fA7-KqP">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Sequence/Loop</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="j1O9Kc_RzHF">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Slow Attack</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="blKQBFwHcUt">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Synthetic</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                            <item id="lqQhuGZxhF1">
+                              <values>
+                                <text>
+                                  <p>
+                                    <run>
+                                      <lit>Tempo-synched</lit>
+                                    </run>
+                                  </p>
+                                </text>
+                              </values>
+                            </item>
+                          </children>
+                        </item>
+                      </children>
+                    </item>
+                    <item id="d2uMA-DN26C">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Bass Line</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="hY0Ua_HFf8A">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Digital Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="j0CGCqZ66a5">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Distorted Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="p0iE8Hjg6WH">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Fingered Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="cxk4ovdOd3s">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Fretless Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="ke877GnWj4q">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Picked Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="p8ZSL50dMNm">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Slapped Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="loqp183Vu1F">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Sub Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="boJKZYkNY2G">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Upright Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="e9tj5szQDCy">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Bowed Strings</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="fr6Ut2S5iKx" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Brass</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="ngQxKkn0B9w" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Subtype</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="jYhomnBHUFC">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Brass Ensemble</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="dTJnSd9h3vo">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Flugelhorn</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kpVYql1aZy0">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>French Horn</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="eNmfyqmnG8S">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Synthetic Bass</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="iJOGBT0uLSz">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Trombone</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="m4X4pkdMYpu">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Trumpet</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="gcdyIeGqU2U">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Tuba</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="jrd_vNzrQwH" expanded="yes">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Drums</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+              <children>
+                <item id="afbqKSQctoD" expanded="yes">
+                  <values>
+                    <text>
+                      <p>
+                        <run>
+                          <lit>Subtype</lit>
+                        </run>
+                      </p>
+                    </text>
+                  </values>
+                  <children>
+                    <item id="fIRUoKju1K4" expanded="yes">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Acoustic Drum Set</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                      <children>
+                        <item id="i0ibFM0KU7I">
+                          <values>
+                            <text>
+                              <p>
+                                <run>
+                                  <lit>Mode</lit>
+                                </run>
+                              </p>
+                            </text>
+                          </values>
+                        </item>
+                      </children>
+                    </item>
+                    <item id="oSq87sVP2PW">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Analog Drum Kit</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="ePqLLE2Mpte">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Closed Hihat</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="iaHocdxufF5">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Cymbal</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="nXt0SNHJxHh">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Digital Drum Kit</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="hnXJ_O3yXQA">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Drum Pattern</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="dCpI088lH6P">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Kick</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="pXWBtL1-bP6">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Kick Drum</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="dVxL-kj9_IQ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Open Hihat</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="c0eEoKjJBm9">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Percussion</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="b-ao_HoojpZ">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Ride</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="fCeC065jdrO">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Sliced Drum Loop</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="csIt7pgaYLd">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Snare</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="m9vidK-0Fo4">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Snare Drum</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="dMUN225fuQi">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Tom</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="kQGVZwfI1r4">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Urban Drum Kit</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                    <item id="h6Zg-F7IMOY">
+                      <values>
+                        <text>
+                          <p>
+                            <run>
+                              <lit>Vinyl Drum Kit</lit>
+                            </run>
+                          </p>
+                        </text>
+                      </values>
+                    </item>
+                  </children>
+                </item>
+              </children>
+            </item>
+            <item id="fRAGCX-r6b9">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Flute</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="dTA92rfYxO5">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Guitar</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="hKl47CJ5VYU">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Mallet Instruments</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="epzEkqEU3L_">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Multitrack</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="mh6PNxTaXPG">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Organ</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="nBM0cVqdGPt">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Percussion</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="dggexTm0X6F">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Piano/Keys</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="eOwfRIZCC_o">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Plucked Strings</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="byHqX_zE3XC">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit> Reed Instruments</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="di82cYey9y5">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Sound Effects</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="bK3-bLZsXgW">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Soundscapes</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="kM5LI6dS-lX">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Synth Lead</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="ege3fj2HWwI">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Synth Misc</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="f5AfafKCHgl">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Synth Pad</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+            <item id="baZ0dnAETKv">
+              <values>
+                <text>
+                  <p>
+                    <run>
+                      <lit>Vocal</lit>
+                    </run>
+                  </p>
+                </text>
+              </values>
+            </item>
+          </children>
+        </item>
+      </children>
+    </item>
+  </root>
+</outline>

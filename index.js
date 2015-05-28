@@ -58,6 +58,12 @@ app.get("/register", function(req, res) {
   res.sendFile(signupPath);
 });
 
+app.get("/register_error", function(req, res) {
+  console.log("get()", "/register_error");
+  var errorPath = path.join(views, "register_error.html");
+   res.sendFile(errorPath);
+});
+
 app.post("/users", function(req, res) {
   var newUser = req.body.user;
   console.log("post()", "/users", newUser);
@@ -67,7 +73,7 @@ app.post("/users", function(req, res) {
         res.send(user);
       } else {
         //console.log("createSecure() failed");
-        res.redirect("/");
+        res.redirect("/register_error");
       }
     });
 });
@@ -78,9 +84,9 @@ app.get("/login", function(req, res) {
   res.sendFile(loginPath);
 });
 
-app.get("/error", function(req, res) {
+app.get("/login_error", function(req, res) {
   console.log("get()", "/login_error");
-  var errorPath = path.join(views, "error.html");
+  var errorPath = path.join(views, "login_error.html");
    res.sendFile(errorPath);
 });
 
@@ -95,7 +101,7 @@ app.post("/login", function(req, res) {
                       req.login(user);
                       res.redirect("/demo");
                     } else {
-                      res.redirect("/error");
+                      res.redirect("/login_error");
                       //res.redirect("/");
                     }
                   })
