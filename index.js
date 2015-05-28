@@ -67,15 +67,21 @@ app.post("/users", function(req, res) {
         res.send(user);
       } else {
         //console.log("createSecure() failed");
-        res.redirect("/register");
+        res.redirect("/");
       }
     });
 });
 
 app.get("/login", function(req, res) {
   console.log("get()", "/login");
-  var loginPath = path.join(views, "login.html");
+  var loginPath = path.join(views, "home.html");
   res.sendFile(loginPath);
+});
+
+app.get("/error", function(req, res) {
+  console.log("get()", "/login_error");
+  var errorPath = path.join(views, "error.html");
+   res.sendFile(errorPath);
 });
 
 app.post("/login", function(req, res) {
@@ -89,7 +95,8 @@ app.post("/login", function(req, res) {
                       req.login(user);
                       res.redirect("/demo");
                     } else {
-                      res.redirect("/login");
+                      res.redirect("/error");
+                      //res.redirect("/");
                     }
                   })
 });
@@ -136,5 +143,5 @@ app.get("/accounts", function(req, res) {
 
 
 app.listen(3000, function () {
-  console.log("Running!");
+  console.log("Running on 3000!");
 })
