@@ -52,7 +52,7 @@ userSchema.methods.checkPassword = function (password, cb) {
                    if (isMatch) {
                      cb(null, user);
                    } else {
-                     cb("OOPS", null);
+                     cb("Error", null);
                    }
                  });
 };
@@ -63,10 +63,16 @@ userSchema.statics.authenticate = function (params, cb) {
     email: params.email
     },
     function (err, user) {
-      user.checkPassword(params.password, cb);
+      //console.log("Error: ", err, "User: ", user);
+      if (user) {
+        user.checkPassword(params.password, cb);
+      } else {
+        cb("Error", null);
+      }
     });
 };
 
 var User = mongoose.model("User", userSchema);
 
 module.exports = User;
+

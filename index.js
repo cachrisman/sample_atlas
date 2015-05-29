@@ -70,9 +70,10 @@ app.post("/users", function(req, res) {
   db.User
     .createSecure(newUser, function (err, user) {
       if (user) {
-        res.send(user);
+        //res.send(user);
+        res.redirect("/demo");
       } else {
-        //console.log("createSecure() failed");
+        console.log("createSecure() failed");
         res.redirect("/register_error");
       }
     });
@@ -119,17 +120,17 @@ app.get("/profile", function(req, res) {
 
 app.get("/demo", function(req, res) {
   var demoPath = path.join(views, "demo.html");
-  console.log("demoPath: ", demoPath);
-  res.sendFile(demoPath);
-/*
+  console.log("get()", "/demo");
+
   req.currentUser(function (err, user) {
     if (!err) {
-      res.send(user.email);
+      res.sendFile(demoPath);
+      //res.send(user.email);
     } else {
       res.redirect("/login");
     }
   });
-*/
+
 });
 
 

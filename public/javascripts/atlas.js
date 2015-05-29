@@ -81,7 +81,7 @@ Data.prototype.initVisibility = function() {
     break;
     case "messo":
     this.isVisible = false;
-    break
+    break;
     default:
     // roots, macros, micros are initially visible
     this.isVisible = true;
@@ -175,29 +175,91 @@ var selectNode = function (atlas, node) {
 }
 
 /**
+* @function setVisibility(node)
+* Called when a macro, messo, or micro node
+* is deselected.  Set the visibility of the 
+* edge nodes accordingly
+*/
+var setVisibility = function (atlas, node) {
+  var edges = atlas.getEdgesTo(node);
+  var isSelected = false;
+  edges.forEach(function(item) {
+    if (item.source.data.isSelected) {
+      isSelected = true;
+    }
+  });
+
+  if (isSelected) {
+    node.data.isVisible = true;
+  } else {
+    node.data.isVisible = false;
+  }
+}
+
+
+
+
+/**
 * @function deselectNode(node)
 * @param node A deselected node
-* Todo: If sample node, stop playing the sample??
+* Deselected node and deal with 
+* with the consequences
 */
 
 var deselectNode = function (atlas, node) {
-  node.data.isSelected = false;
-  node.data.fontWeight = "normal";
-  node.data.fontSize = 12;
-  if (node.data.type === "sample") {
-    console.log("stopped playing: ", node.data.filePath);
+  switch (node.data.type) {
+    case "sample":
+    node.data.fontWeight = "normal";
+    node.data.fontSize = 12;
+    // stop playing
     node.data.audio.pause();
     node.data.audio.currentTime = 0;
-  } else {
+    // deal with my visiblity
+    setVisibility(atlas, node);
+    break;
+    case "root":
+    break; // roots cannot be deselected or invisible??
+    case "macro":
+    // macros are never invisible
+    node.data.fontWeight = "normal";
+    node.data.fontSize = 12;
+    node.data.isSelected = false;
+    // make my messo & sample edges invisible and deselected
     var edges = atlas.getEdgesFrom(node);
     edges.forEach(function (item) {
-      item.data.isVisible = false;
-      if (item.source.data.type !== "messo" &&
-          item.source.data.type !== "micro") {
-        item.target.data.isVisible = false;
-      }
+      item.data.isVisible = false; // turn off the edge
+      deselectNode(atlas, item.target)
     });
+    break;
+    case "messo":
+    node.data.fontWeight = "normal";
+    node.data.fontSize = 12;
+    node.data.isSelected = false;
+    // deal with my visiblity
+    setVisibility(atlas, node);
+    // deal with my sample's visibility
+    var edges = atlas.getEdgesFrom(node);
+    edges.forEach(function (item) {
+      item.data.isVisible = false; // turn off the edge
+      deselectNode(atlas, item.target)
+    });
+    break;
+    case "micro":
+    node.data.fontWeight = "normal";
+    node.data.fontSize = 12;
+    node.data.isSelected = false;
+    // micros are never invisible
+    // call deselectNode on all my samples
+    var edges = atlas.getEdgesFrom(node);
+    edges.forEach(function (item) {
+      item.data.isVisible = false; // turn off the edge
+      deselectNode(atlas, item.target)
+    });
+    break;
+    default: // there should be no default!!
+    break;
   }
+
   return;
 }
 
