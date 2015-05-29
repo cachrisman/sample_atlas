@@ -1,2 +1,2 @@
-    var samples = getSamples("two_samples.json");
+    var samples = getSamples("samples.json");
     var mode = "demo"

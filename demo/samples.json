@@ -1,58 +1,162 @@
 [
     {
-        "name": "2Pranged", 
+        "name": "Adrenalinea2", 
         "macro": "Bass",
         "messo": "Analog Bass", 
         "micro": ["Dry", "FM"], 
         "technical": [], 
-        "filePath": "./samples/2Pranged.wav"
+        "filePath": "./Adrenalinea2.wav"
     },
     {
-        "name": "Acid Bass", 
+        "name": "Classic Bass A1", 
         "macro": "Bass",
         "messo": "Bass Line", 
         "micro": ["Dry", "Glide/Pitch Mod"], 
         "technical": [], 
-        "filePath": "./samples/AcidBass.wav"
+        "filePath": "./ClassicBassV1A1.wav"
     },
     {
-        "name": "3.5 Floppy Bass",
+        "name": "Classic Bass A2", 
         "macro": "Bass",
-        "messo": "Digital Bass",
-        "micro": ["Synthetic"],
-        "technical": [],
-        "filePath": "./samples/35floppybass.wav"
+        "messo": "Bass Line", 
+        "micro": ["Dry", "Processed", "Glide/Pitch Mod"], 
+        "technical": [], 
+        "filePath": "./ClassicBassV1A2.wav"
     },
     {
-        "name": "Absolute",
+        "name": "E-Bass Slap C3",
         "macro": "Bass",
-        "messo": "Digital Bass",
-        "micro": ["Additive", "Percussive"],
+        "messo": "Slapped Bass",
+        "micro": ["Monophonic", "Processed"],
         "technical": [],
-        "filePath": "./samples/absolute.wav"
+        "filePath": "./E-BassSlapC3.wav"
     },
     {
-        "name": "Addendum",
+        "name": "E-Bass Slap B1",
         "macro": "Bass",
-        "messo": "Digital Bass",
-        "micro": ["Chord", "Monophonic"],
+        "messo": "Slapped Bass",
+        "micro": ["Monophonic", "Processed"],
         "technical": [],
-        "filePath": "./samples/addendum.wav"
+        "filePath": "./E-BassSlapB1.wav"
     },
     {
-        "name": "Amberton",
-        "macro": "Drums",
-        "messo": "Acoustic Drum Set",
-        "micro": ["Sample-based"],
+        "name": "Jazz C3",
+        "macro": "Bass",
+        "messo": "Slapped Bass",
+        "micro": ["Long Evolving", "Processed"],
         "technical": [],
-        "filePath": "./samples/amberton.wav"
+        "filePath": "./Jazzc3.wav"
     },
     {
-        "name": "Crash Choke",
-        "macro": "Drums",
-        "messo": "Cymbal",
-        "micro": ["Dry", "Sample-based"],
+        "name": "Acoustic Guitar 1 A2",
+        "macro": "Guitar",
+        "messo": "Analog Guitar",
+        "micro": ["Dry", "Plucked"],
         "technical": [],
-        "filePath": "./samples/crashchoke.wav"
+        "filePath": "./AcousticGuitar1A2.wav"
+    },
+    {
+        "name": "Kora A3",
+        "macro": "Guitar",
+        "messo": "Plucked",
+        "micro": ["Dry", "Monophonic"],
+        "technical": [],
+        "filePath": "./KoraA3.wav"
+    },
+    {
+        "name": "Sitar Db1",
+        "macro": "Guitar",
+        "messo": "Plucked",
+        "micro": ["Dry", "Monophonic", "Exotic"],
+        "technical": [],
+        "filePath": "./SitarDb1.wav"
+    },
+    {
+        "name": "Trash Guitar Short Ab2",
+        "macro": "Guitar",
+        "messo": "Picked",
+        "micro": ["Distorted", "Loud"],
+        "technical": [],
+        "filePath": "./TrashGuitarShortAb2.wav"
+    },
+    {
+        "name": "Twelve String A2",
+        "macro": "Guitar",
+        "messo": "Picked",
+        "micro": ["Dry", "Synthetic"],
+        "technical": [],
+        "filePath": "./TwelveStringA2.wav"
+    },
+    {
+        "name": "E-Guitar B3",
+        "macro": "Guitar",
+        "messo": "Electric Guitar",
+        "micro": ["Sample-based", "Processed"],
+        "technical": [],
+        "filePath": "./E-GuitarB3.wav"
+    },
+    {
+        "name": "M3 Grand V1 A4",
+        "macro": "Piano/Keys",
+        "messo": "Grand Piano",
+        "micro": ["Dry", "Quiet"],
+        "technical": [],
+        "filePath": "./M3GrandV1A4.wav"
+    },
+    {
+        "name": "E-Piano 1 Bb1",
+        "macro": "Piano/Keys",
+        "messo": "Electric Piano",
+        "micro": ["Dry", "Quiet"],
+        "technical": [],
+        "filePath": "./E-Piano1Bb1.wav"
+    },
+    {
+        "name": "FM-Piano 1 G2",
+        "macro": "Piano/Keys",
+        "messo": "Electric Piano",
+        "micro": ["Processed", "FM"],
+        "technical": [],
+        "filePath": "./FM-Piano1G2.wav"
+    },
+    {
+        "name": "Male Choir B1",
+        "macro": "Vocal",
+        "messo": "Male Vocal",
+        "micro": ["Processed", "Auditorium"],
+        "technical": [],
+        "filePath": "./MaleChoirB1.wav"
+    },
+    {
+        "name": "Mixed Choir",
+        "macro": "Vocal",
+        "messo": "Mixed Vocal",
+        "micro": ["Processed", "Cathedral"],
+        "technical": [],
+        "filePath": "./MixedChoirA"
+    },
+    {
+        "name": "Female Choir A3",
+        "macro": "Vocal",
+        "messo": "Female Vocal",
+        "micro": ["Processed", "Auditorium"],
+        "technical": [],
+        "filePath": "./FemaleChoirA3.wav"
+    },
+    {
+        "name": "FM-Piano 1 G2",
+        "macro": "Piano/Keys",
+        "messo": "Electric Piano",
+        "micro": ["Processed", "FM"],
+        "technical": [],
+        "filePath": "./FM-Piano1G2.wav"
+    },
+    {
+        "name": "Harpsichord B2",
+        "macro": "Piano/Keys",
+        "messo": "Harpsichord",
+        "micro": ["Dry", "Processed"],
+        "technical": [],
+        "filePath": "./HarpsichordB2.wav"
     }
 ]

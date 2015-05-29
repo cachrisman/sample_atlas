@@ -60,7 +60,7 @@ Data.prototype.initColor = function() {
     this.color = "#ec5250";
     break;
     case "root":
-    this.color = "brown";
+    this.color = "#AE62B7";
     break;
   }
 }
@@ -214,6 +214,7 @@ var deselectNode = function (atlas, node) {
     // stop playing
     node.data.audio.pause();
     node.data.audio.currentTime = 0;
+    node.data.isSelected = false;
     // deal with my visiblity
     setVisibility(atlas, node);
     break;
