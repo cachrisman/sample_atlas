@@ -43,6 +43,18 @@ var loginHelpers = function(req, res, next) {
 
 app.use(loginHelpers);
 
+
+function validateEmail(email) {
+  // http://stackoverflow.com/a/46181/11236
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function validatePassword(password, confirmation) {
+  return (password.length >= 6 && confirmation.length >= 6)
+}
+
+
 var views = path.join(process.cwd(), "views");
 console.log("views: ", views);
 
@@ -67,16 +79,24 @@ app.get("/register_error", function(req, res) {
 app.post("/users", function(req, res) {
   var newUser = req.body.user;
   console.log("post()", "/users", newUser);
-  db.User
-    .createSecure(newUser, function (err, user) {
-      if (user) {
-        //res.send(user);
-        res.redirect("/demo");
-      } else {
-        console.log("createSecure() failed");
-        res.redirect("/register_error");
-      }
-    });
+
+  if (validateEmail(newUser.email) && 
+      validatePassword(newUser.password, newUser.password_confirmation)) {
+    db.User
+      .createSecure(newUser, function (err, user) {
+        if (user) {
+          //res.send(user);
+          res.redirect("/demo");
+        } else {
+          console.log("createSecure() failed");
+          res.redirect("/register_error");
+        }
+      });
+  } else {
+    console.log("validateEmail() or validatePassword() failed");
+    res.redirect("/register_error");
+  }
+
 });
 
 app.get("/login", function(req, res) {
