@@ -54,7 +54,7 @@ Data.prototype.initColor = function() {
     this.color = "#0fc1c9";
     break;
     case "messo":
-    this.color = "fcd735";
+    this.color = "#fcd735";
     break;
     case "macro":
     this.color = "#ec5250";

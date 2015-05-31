@@ -8,11 +8,11 @@ window.onload = function() {
       assert(atlas !== undefined, "buildAtlas() returns a new atlas");
       var type = atlas.getNode("Type");
       assert(type !== undefined, "Type node added to atlas");
-      assert(type.data.color === "brown", "type node color is brown");
+      assert(type.data.color === "#AE62B7", "type node color is #AE62B7");
       assert(atlas.getEdgesFrom(type).length === 2, "Type node has edge to Bass & Piano/Keys");
       var mode = atlas.getNode("Mode");
       assert(mode !== undefined, "Mode node added to atlas");
-      assert(mode.data.color === "brown", "mode node color is brown");
+      assert(type.data.color === "#AE62B7", "Mode node color is #AE62B7");
       assert(atlas.getEdgesFrom(mode).length === 4,
              "Mode node has edges to Long Evolving, Digital, FM & Dry");
       var id = samples[1].id;
@@ -21,14 +21,15 @@ window.onload = function() {
       assert(!sNode.data.isVisible, "Piano sample not visible");
       var node = atlas.getNode("Piano/Keys");
       assert(node.data.type === "macro", "Atlas has macro node");
-      assert(node.data.color === "red", "macro node color is red");
+      assert(node.data.color === "#ec5250", "macro node color is #ec5250");
       assert(node.data.isVisible, "Piano/Keys is visible");
       assert(!node.data.isSelected, "Piano/Keys is not selected");
       assert(atlas.getEdgesFrom(node).length === 2,
              "Piano/Keys node has edges to sample & messo");
       var node = atlas.getNode("Grand Piano");
       assert(node.data.type === "messo", "Atlas has a messo node");
-      assert(node.data.color === "green", "messo node color is green");
+      assert(node.data.color === "#fcd735", "messo node color is #fcd735");
+      console.log("messo color: ", node.data.color);
       assert(!node.data.isVisible, "messo node is not visible");
       assert(atlas.getEdgesFrom(node).length === 1, "Messo has edge to sample");
       var node = atlas.getNode("Digital");
