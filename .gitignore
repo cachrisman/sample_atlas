@@ -33,4 +33,9 @@ sandbox
 planning
 
 # Lib
+
+# environment variables
 .env
+
+# os x files
+.DS_Store
