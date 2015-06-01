@@ -5,9 +5,13 @@ var express = require("express"),
     path = require("path");
 
 app = express();
+
+// load environment variables
+require('dotenv').load();
+
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(session({
-  secret: "SUPER STUFF",
+  secret: process.env.SECRET,
   resave: false,
   saveUnitialized: true
 }));
@@ -80,7 +84,7 @@ app.post("/users", function(req, res) {
   var newUser = req.body.user;
   console.log("post()", "/users", newUser);
 
-  if (validateEmail(newUser.email) && 
+  if (validateEmail(newUser.email) &&
       validatePassword(newUser.password, newUser.password_confirmation)) {
     db.User
       .createSecure(newUser, function (err, user) {
