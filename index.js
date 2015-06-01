@@ -15,7 +15,7 @@ app.use(session({
   secret: process.env.SECRET,
   store: new MongoStore({mongooseConnection:db.mongoose.connection}),
   resave: false,
-  saveUnitialized: true
+  saveUninitialized: true
 }));
 
 app.use(express.static("public"));
