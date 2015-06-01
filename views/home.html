@@ -25,9 +25,18 @@
         <img id="brand" alt="Brand" src="assets/sampleatlas-color2.png" />
       </a>
     </div>
-    <ul class="nav navbar-nav navbar-right">
+     <!-- Authorization mode only -->
+    <ul class="nav navbar-nav navbar-right authorization">
       <li><button class="button" type="button" data-toggle="modal" data-target="#logInModal">Log In</button></li>
       <li><button class="button" type="button" data-toggle="modal" data-target="#registerModal">Sign Up</button></li>
+    </ul>
+    <!-- Demo mode only -->
+    <ul class="nav navbar-nav navbar-right logout hidden">
+      <li>
+        <form method="POST" action="/logout">
+          <button class="button" type="submit">Log Out</button>
+        </form>
+      </li>
     </ul>
   </div>
 </nav>
