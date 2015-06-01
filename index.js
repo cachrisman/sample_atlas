@@ -144,10 +144,10 @@ app.get("/demo", function(req, res) {
 
   req.currentUser(function (err, user) {
     if (!err) {
-      //res.sendFile(demoPath);
+      res.sendFile(demoPath);
       //res.send(user.email);
-      $("#authorization").addClass("hidden");
-      $("#logout").removeClass("hidden");
+      //$("#authorization").addClass("hidden");
+      //$("#logout").removeClass("hidden");
     } else {
       res.redirect("/login");
     }
