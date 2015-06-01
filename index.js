@@ -1,6 +1,7 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     session = require("express-session"),
+    MongoStore = require('connect-mongo')(session),
     db = require("./models"),
     path = require("path");
 
@@ -12,6 +13,7 @@ require('dotenv').load();
 app.use(bodyParser.urlencoded({extended: true }));
 app.use(session({
   secret: process.env.SECRET,
+  store: new MongoStore({mongooseConnection:db.mongoose.connection}),
   resave: false,
   saveUnitialized: true
 }));
@@ -148,10 +150,10 @@ app.get("/demo", function(req, res) {
 
   req.currentUser(function (err, user) {
     if (!err) {
-      //res.sendFile(demoPath);
-      //res.send(user.email);
-      $("#authorization").addClass("hidden");
-      $("#logout").removeClass("hidden");
+      res.sendFile(demoPath);
+      // res.send(user.email);
+      //$("#authorization").addClass("hidden");
+      //$("#logout").removeClass("hidden");
     } else {
       res.redirect("/login");
     }
